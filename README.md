@@ -7,11 +7,14 @@ Bard Hvac and humidity controller Ver 1.25
 ## Current Overview:
 Hvac Control is used in conjunction with wall-mounted Bard HVAC units to effectively, control the environment with high precision.
 
-Utilizing an integral real-time clock, the Hvac Control gives the user full control of the environment day or night, with the ability to adjust temperature targets, differential, and humidity levels.
+Utilizing an integral real-time clock, the controler gives the user full control of the environment day or night, with the ability to adjust temperature targets, differential, and humidity levels.
 
 An LCD display, shows you the current temperature, humidity, target parameters, current status from heating, cooling, or dehumidification, day or night modes, the current time and night mode start finish times.
 
 For full control, the rotary knob allows access to an easy to navigate array of setting, for control right down to the precision of 0.1 of a degree.
+
+The main control is by way of 4 output relays, and the controller has the scope for inputs, to allow feed back the Hvac, in future versions. 
+
 
 ## Working Control:
 As the Bard Hvac only has three control wires, heating, cooling, dehumidification, where dehumidification takes precedence over cooling and heating.
@@ -47,6 +50,19 @@ this will give us an active value from 0-100, this can then be used for preset d
 * [Arduino Ide](https://www.arduino.cc/en/software)
 * [drawio](https://www.diagrams.net/)
 * [Photoshop](https://www.adobe.com/uk/products/photoshop/landpa.html?mv=search&mv=search&sdid=LZ32SYVR&ef_id=CjwKCAiAlfqOBhAeEiwAYi43F9Sq_9DlibH_vqFkxU4ar26NIl-3JLx06j0UGyqSEN3qlIh81HB_ghoCcdcQAvD_BwE:G:s&s_kwcid=AL!3085!3!474050983863!e!!g!!adobe%20photoshop!1422700211!58647953511&gclid=CjwKCAiAlfqOBhAeEiwAYi43F9Sq_9DlibH_vqFkxU4ar26NIl-3JLx06j0UGyqSEN3qlIh81HB_ghoCcdcQAvD_BwE)
+
+
+## Main Hardware:
+* 1x Controllino Mini,
+* 1x SHT31 Temperature humidity sensor,
+* 1x Lcd I2C,
+* 1x KY-040 Rotary Encoder,
+* 1x 24v DC Psu,
+* 1x 24v-5vdc buck converter,
+* 4x 25v-240v SPDT relays.
+
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/sensor.jpg" alt="sensor" width="50%"/><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/controllino.jpg" alt="mirco controller" width="50%"/></div>
+
 
 ## Software:
 The Software is written in C++, compiled and uploaded to the micro controller by the Arduino Ide, most libraries used are Arduino standard, apart from any items listed in the additional section.
