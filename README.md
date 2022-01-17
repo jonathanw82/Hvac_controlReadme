@@ -61,7 +61,7 @@ this will give us an active value from 0-100, this can then be used for preset d
 * 1x 24v-5vdc buck converter,
 * 4x 25v-240v SPDT relays.
 
-<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/sensor.jpg" alt="sensor" width="50%"/><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/controllino.jpg" alt="mirco controller" width="50%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/sensor.jpg" alt="sensor" width="50%"/><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/controllino.jpg" alt="mirco controller" width="50%"/></div>
 
 
 ## Software:
