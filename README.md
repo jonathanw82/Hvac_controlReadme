@@ -56,7 +56,7 @@ For full control, the rotary knob allows access to an easy-to-navigate array of 
 * 1x 24v-5vdc buck converter,
 * 4x 25v-240v SPDT relays.
 
-<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/sensor.jpg" alt="sensor" width="50%"/><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/controllino.jpg" alt="mirco controller" width="50%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/sensor.jpg" alt="sensor" width="50%"/><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/controllino.jpg" alt="mirco controller" width="50%"/></div>
 
 
 ## Software:
