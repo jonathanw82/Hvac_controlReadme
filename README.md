@@ -1,35 +1,30 @@
 <div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/repoimage.jpg" alt="repo image" width="100%"/></div>
 
 # HVAC-Controller
-Bard Hvac and humidity controller Ver 1.25
+Bard Hvac and humidity controller Ver 1.26
 
-
-## Current Overview:
 Hvac Control is used in conjunction with wall-mounted Bard HVAC units to effectively, control the environment with high precision.
 
-Utilizing an integral real-time clock, the controler gives the user full control of the environment day or night, with the ability to adjust temperature targets, differential, and humidity levels.
 
-An LCD display, shows you the current temperature, humidity, target parameters, current status from heating, cooling, or dehumidification, day or night modes, the current time and night mode start finish times.
+### <b>Problem:</b>
 
-For full control, the rotary knob allows access to an easy to navigate array of setting, for control right down to the precision of 0.1 of a degree.
-
-The main control is by way of 4 output relays, and the controller has the scope for inputs, to allow feed back the Hvac, in future versions. 
-
-
-## Working Control:
-As the Bard Hvac only has three control wires, heating, cooling, dehumidification, where dehumidification takes precedence over cooling and heating.
-
-It is difficult to accurately control it with any real precision, after testing the system with the current controller, it was found that the humidity becomes a chasing game, data taken from 30mhz sensors shows the humidity, at a resolution of one minute (Fig 1), it looks like a sawtooth wave, the humidifier pumps the environment with humidity until it reaches its set point, but then overshoots, the Hvac then switches to dehumidify, to attempt to bring down the humidity causing the sawtooth effect as can bee seen in (Fig 1), all the while upsetting the heating or cooling equilibrium, as dehumidification takes precedence.
-
-
-As the humidity can not be controlled with fast duty cycles that could damage this type of mechanical equipment, we use the actual humidity value from the humidity sensor and pass it to a PID (proportional integral derivative), 
-this will give us an active value from 0-100, this can then be used for preset duty cycles in seconds, this will simulate slow PWM, if the humidity is far away from the setpoint, the longer the duty cycle, as the humidity approaches its set point the frequency of duty cycle will shorten, allowing short puffs of humidity, short enough not to overshoot the setpoint but long enough not to damage the humidification equipment, all the while potentially reducing the amount of dehumidification used, reducing the likelihood of overshooting the setpoint, if an overshoot does occur and the humidity passes its setpoint plus the differential, the dehumidification will be activated until the humidity falls back past its setpoint. 
+The current controllers have very little precision and the user has no way of setting day or night setpoints, after testing the controllers for some time and using the data from the 30mhz sensor platform, their flaws became apparent, the temperature had a tendency to regularly overshoot it setpoint causing the Hvac to switch between heating and cooling unnecessarily,  it was also found that the humidity was also overshooting and creating a sawtooth style wave as can be seen in (Fig 1) as the Hvac was switching between humidifying and dehumidifying. both of these issues can potentially wast energy and have unstable results.
 
 ### (Fig 1)
 <div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/humid.jpg" alt="humidity histrory graph" width="100%"/></div>
 
-### (Fif 2)
-<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/humhvac.jpg" alt="expected humidity histrory graph" width="100%"/></div>
+### <b>Solution:</b>
+
+Havc Control utilizes an integrated real-time clock, giving the user control of the environment day or night (Fig 2), with the ability to adjust temperature targets, differential, and humidity levels. 
+An LCD display, shows you the current temperature, humidity, target parameters, current status from heating, cooling, or dehumidification (Fig 3), day or night modes, the current time, and night mode start-finish times.
+For full control, the rotary knob allows access to an easy-to-navigate array of settings, for control right down to the precision of 0.1 of a degree.
+
+### (Fig 2)
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/graph.jpg" alt="expected temp histrory graph" width="100%"/></div>
+
+### (Fig 3)
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/humhvac.jpg" alt="expected hum histrory graph" width="100%"/></div>
+
 
 #
 
@@ -103,13 +98,13 @@ Estimated Power Consumption as rated in docs, actual may vary.
 | Setup Menu.                                   | Options         |
 | :----------------                             | :-------        |
 | Day Target Temperature.                       | +/- 0-35°c      |
-| Max/Min Day Target Temperature differential.  | +/- 0.10-2°c    |
+| Max/Min Day Target Temperature differential.  | +/- 0.10-2.00°c |
 | Day Target Humidity.                          | +/- 20-100%     |
-| Max/Min Day Target Humidity differential.     | +/- 0.10-2 %    |
+| Max/Min Day Target Humidity differential.     | +/- 0.10-2.00%  |
 | Night Target Temperature.                     | +/- 0-35°c      |
-| Max/Min Night Target Temperature differential.| +/- 0.10-2°c    |
+| Max/Min Night Target Temperature differential.| +/- 0.10-2.00°c |
 | Night Target Humidity.                        | +/- 20-100%     |
-| Max/Min Night Target Humidity differential.   | +/- 0.10-2 %    |
+| Max/Min Night Target Humidity differential.   | +/- 0.10-2.00%  |
 | Night Mode Start Time.                        | 0-23H 0-59M     |
 | Night Mode Finish Time.                       | 0-23H 0-59M     |
 | Day Light Saving                              | On/Off          |
@@ -124,7 +119,15 @@ Night start and finish times can never be the same, if the hours and minutes are
 
 * Differential:
 
-The Differentails will always be apart by 0.10 the miniumum +/- fluctionation is 0.2°c or 0.2% it is preferable to keep this setting 0.5 to allow a differentail swing of 1°c or 1%.
+The differential is +/- the value that is set by the user, as an example, if the user sets the value 0.5°c as the temperature differential, and has a target temperature of 20°c, as has temperature meets its target it will enter a so-called dead zone, between the differential values and the set point value (Fig 4), At this point, the Hvac will remain dormant neither heating nor cooling as the desired setpoint has been reached. 
+
+### (Fig 4)
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/diff.jpg" alt="diff example" width="100%"/></div> 
+
+
+If the temperature continues to rise and meets the upper differential 20.5°c, the Hvac will start to cool to bring down the temperature, once the setpoint 20°c has been met, the Hvac once again enters the dead zone (between the setpoint and differential) the same will happen if the temperature drops and meets the lower differential of now 19.5°c the Hvac will start to Heat until it meets the setpoint 20°c and enters the dead zone once again.
+
+Ther differential can be set from 0.10°c to 2°c it is recommended to use 0.5°c, the differentail only needs to be set once and will be used for the upper and lower values.
 
 * Constant Day & Night:
 
@@ -138,16 +141,16 @@ Setting day light saving is done explicitly by the user, this is not done automa
 ## Real time Clock (RTC):
 It is worth noting that the Controllino has a built-in battery to hold the RTC  when there is no external power, however it only holds the RTC for about 2 weeks, after this time the RTC may need resetting.
 
-To set the RTC, you will require a laptop or similar device, with the [Arduino Ide](https://www.arduino.cc/en/software) software installed and set up correctly to do this open the Arduino Ide, go to File, Preferences, under the settings tab locate the  "Additional boards manager URLs", then put a comma after the anything already in the box then append this line of code https://raw.githubusercontent.com/CONTROLLINO-PLC/CONTROLLINO_Library/master/Boards/package_ControllinoHardware_index.json you will then need to go to tools, board, board manger, then search for Controllino and install, the last step to install go to sketch, include library, manage libraries search and install Controllino, you will now need a USB to USB B cable, and the relevant Hvac firmware, please make a note of the correct firmware version, this can be obtained by entering the menu system by pressing the encoder button. (Fig 3)
+To set the RTC, you will require a laptop or similar device, with the [Arduino Ide](https://www.arduino.cc/en/software) software installed and set up correctly to do this open the Arduino Ide, go to File, Preferences, under the settings tab locate the  "Additional boards manager URLs", then put a comma after the anything already in the box then append this line of code https://raw.githubusercontent.com/CONTROLLINO-PLC/CONTROLLINO_Library/master/Boards/package_ControllinoHardware_index.json you will then need to go to tools, board, board manger, then search for Controllino and install, the last step to install go to sketch, include library, manage libraries search and install Controllino, you will now need a USB to USB B cable, and the relevant Hvac firmware, please make a note of the correct firmware version, this can be obtained by entering the menu system by pressing the encoder button. (Fig 5)
 
-### (Fig 3)
+### (Fig 5)
 <div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/lcd.jpg" alt="Setup of real time clock" width="50%"/></div>
 <br/>
 
-Open the firmware in the Arduino IDE, when flashing the Controllino for the first time or setting the RTC, the line of code under the void setup() section, named Controllino_SetTimeDate(), will need to be uncommented. (Fig 4)
+Open the firmware in the Arduino IDE, when flashing the Controllino for the first time or setting the RTC, the line of code under the void setup() section, named Controllino_SetTimeDate(), will need to be uncommented. (Fig 6)
 <br/>
 
-### (Fig 4)
+### (Fig 6)
 <div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/RTCready.jpg" alt="Setup of real time clock" width="100%"/></div>
 
 <br/>
@@ -166,9 +169,9 @@ Plug in the Controllino to the laptop and go to tools, board, and select Control
 
 After the initial upload to the Controllino the RTC will be set.
 
-This line of code in (Fig 5) should then be commented out as shown, and the Controllino reflashed by pressing the circle with a right-pointing arrow as before.
+This line of code in (Fig 7) should then be commented out as shown, and the Controllino reflashed by pressing the circle with a right-pointing arrow as before.
 
-### (Fig 5)
+### (Fig 7)
 
 <div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/RTcommeted.jpg" alt="Setup of real time clock" width="100%"/></div>
 
