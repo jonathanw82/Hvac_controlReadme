@@ -1,4 +1,4 @@
-<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/repoimage.jpg" alt="repo image" width="100%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-ControlReadme/blob/main/media/repoimage.jpg" alt="repo image" width="100%"/></div>
 
 # HVAC-Controller
 Bard Hvac and humidity controller Ver 1.26
@@ -11,7 +11,7 @@ Hvac Control is used in conjunction with wall-mounted Bard HVAC units to effecti
 The current controllers have very little precision and the user has no way of setting day or night setpoints, after testing the controllers for some time and using the data from the 30mhz sensor platform, their flaws became apparent, the temperature had a tendency to regularly overshoot it setpoint causing the Hvac to switch between heating and cooling unnecessarily,  it was also found that the humidity was also overshooting and creating a sawtooth style wave as can be seen in (Fig 1) as the Hvac was switching between humidifying and dehumidifying. both of these issues can potentially wast energy and have unstable results.
 
 ### (Fig 1)
-<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/humid.jpg" alt="humidity histrory graph" width="100%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-ControlReadme/blob/main/media/humid.jpg" alt="humidity histrory graph" width="100%"/></div>
 
 ### <b>Solution:</b>
 
@@ -20,10 +20,10 @@ An LCD display, shows you the current temperature, humidity, target parameters, 
 For full control, the rotary knob allows access to an easy-to-navigate array of settings, for control right down to the precision of 0.1 of a degree.
 
 ### (Fig 2)
-<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/graph.jpg" alt="expected temp histrory graph" width="100%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-ControlReadme/blob/main/media/graph.jpg" alt="expected temp histrory graph" width="100%"/></div>
 
 ### (Fig 3)
-<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/humhvac.jpg" alt="expected hum histrory graph" width="100%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-ControlReadme/blob/main/media/humhvac.jpg" alt="expected hum histrory graph" width="100%"/></div>
 
 
 #
@@ -56,7 +56,7 @@ For full control, the rotary knob allows access to an easy-to-navigate array of 
 * 1x 24v-5vdc buck converter,
 * 4x 25v-240v SPDT relays.
 
-<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/sensor.jpg" alt="sensor" width="50%"/><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/controllino.jpg" alt="mirco controller" width="50%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-ControlReadme/blob/main/media/sensor.jpg" alt="sensor" width="50%"/><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/controllino.jpg" alt="mirco controller" width="50%"/></div>
 
 
 ## Software:
@@ -86,12 +86,12 @@ Estimated Power Consumption as rated in docs, actual may vary.
 | KY-040 Rotary Encoder  | @ 5v < 0.05 ma     |
 |                        |Total =  401.55 ma  |
 
-<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/wiring.jpg" alt="wiring diagram" width="100%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-ControlReadme/blob/main/media/wiring.jpg" alt="wiring diagram" width="100%"/></div>
 
 
 ## Setup program options:
 
-<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/setup.jpg" alt="Setup flow Chart" width="100%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-ControlReadme/blob/main/media/setup.jpg" alt="Setup flow Chart" width="100%"/></div>
 
 #
 
@@ -122,7 +122,7 @@ Night start and finish times can never be the same, if the hours and minutes are
 The differential is +/- the value that is set by the user, as an example, if the user sets the value 0.5°c as the temperature differential, and has a target temperature of 20°c, as has temperature meets its target it will enter a so-called dead zone, between the differential values and the set point value (Fig 4), At this point, the Hvac will remain dormant neither heating nor cooling as the desired setpoint has been reached. 
 
 ### (Fig 4)
-<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/diff.jpg" alt="diff example" width="100%"/></div> 
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-ControlReadme/blob/main/media/diff.jpg" alt="diff example" width="100%"/></div> 
 
 
 If the temperature continues to rise and meets the upper differential 20.5°c, the Hvac will start to cool to bring down the temperature, once the setpoint 20°c has been met, the Hvac once again enters the dead zone (between the setpoint and differential) the same will happen if the temperature drops and meets the lower differential of now 19.5°c the Hvac will start to Heat until it meets the setpoint 20°c and enters the dead zone once again.
@@ -144,14 +144,14 @@ It is worth noting that the Controllino has a built-in battery to hold the RTC  
 To set the RTC, you will require a laptop or similar device, with the [Arduino Ide](https://www.arduino.cc/en/software) software installed and set up correctly to do this open the Arduino Ide, go to File, Preferences, under the settings tab locate the  "Additional boards manager URLs", then put a comma after the anything already in the box then append this line of code https://raw.githubusercontent.com/CONTROLLINO-PLC/CONTROLLINO_Library/master/Boards/package_ControllinoHardware_index.json you will then need to go to tools, board, board manger, then search for Controllino and install, the last step to install go to sketch, include library, manage libraries search and install Controllino, you will now need a USB to USB B cable, and the relevant Hvac firmware, please make a note of the correct firmware version, this can be obtained by entering the menu system by pressing the encoder button. (Fig 5)
 
 ### (Fig 5)
-<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/lcd.jpg" alt="Setup of real time clock" width="50%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-ControlReadme/blob/main/media/lcd.jpg" alt="Setup of real time clock" width="50%"/></div>
 <br/>
 
 Open the firmware in the Arduino IDE, when flashing the Controllino for the first time or setting the RTC, the line of code under the void setup() section, named Controllino_SetTimeDate(), will need to be uncommented. (Fig 6)
 <br/>
 
 ### (Fig 6)
-<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/RTCready.jpg" alt="Setup of real time clock" width="100%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-ControlReadme/blob/main/media/RTCready.jpg" alt="Setup of real time clock" width="100%"/></div>
 
 <br/>
 
@@ -173,7 +173,7 @@ This line of code in (Fig 7) should then be commented out as shown, and the Cont
 
 ### (Fig 7)
 
-<div align="center"><img src="https://github.com/jonathanw82/HVAC-Controller/blob/main/media/RTcommeted.jpg" alt="Setup of real time clock" width="100%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/HVAC-ControlReadme/blob/main/media/RTcommeted.jpg" alt="Setup of real time clock" width="100%"/></div>
 
 
 It is possible to the allow the code to automatically update the clock when the firmware is up loaded, however this will interfear with the UTC time if done in BST.
