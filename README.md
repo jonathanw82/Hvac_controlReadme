@@ -169,7 +169,11 @@ The LCD backlight can be set to automatic timeout, this will turn off the backli
 * temp_I                           
 * temp_D                           
 * target_temp                     
-* time_period                         
+* time_period 
+* night_hour_start
+* night_minute_start
+* night_hour_finish
+* night_minute_finish                        
 * hum_P                               
 * hum_I                                
 * hum_D                              
