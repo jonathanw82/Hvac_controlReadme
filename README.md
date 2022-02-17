@@ -32,15 +32,6 @@ PID loops are used to control the temperature and humidity, this allows the cont
 
 <br/>
 
-Current testing is producing promising results with temperature within +- 0.15°c (Fig 3.1) and humidity around +- 5% with far less saw tooth effect. (Fig 3.2) 
-
-### (Fig 3.1)
-<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/temp_pid%20.png" alt="temp histrory graph" width="100%"/></div>
-
-### (Fig 3.2)
-<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/hum_pid%20.png" alt="hum histrory graph" width="100%"/></div>
-
-<br/>
 
 ## So how does it work?
 After the user has set up the initial settings such as temperature target, humidity target, P, I, and D for both temperature and humidity, and also set a night time on/off period, the controller will pretty much look after itself.
@@ -55,6 +46,27 @@ When the night period is reached the controller will automatically adjust its se
 
 During operation, once a second, the temperature/humidity sensor values, PID values, and a myriad of other values are transmitted via Mqtt. These messages are then collected by the Mosquitto Mqtt Broker that is installed on the Raspberry Pi, that is connected to the Controllinio Maxi via an ethernet cable. The Django API also installed on the Pi will then decide what messages it requires and save the data into an SQLite database. At the same time the messages will be picked up by a separate python program also running on the Pi called Phoe Mqtt, these can then be sent to JavaScript via websockets where realtime data such as temperature and humidity, night status and error messages can be displayed on a general user interface (webpage), JavaScript will also call the Django API in the backend requesting JSON formatted historical data such as temperature, humidity, the P,  I, and D responses that can then be displayed in graphs. Commands from the front end can also be sent back via the Mqtt service allowing variables such as targets and times periods to be adjusted on the Controillino in real-time.
 
+## Testing:
+Current testing is producing promising results, it is worth bearing in mind that with the container not being insulated or sealed, the results we are seeing may not be a true representation of what we will actually see in the correct environments but, the results are pleasing so far.
+
+* With a time period of 2.5 minutes, 
+temperature is stable within +- 0.15°c (Fig 3.1) and humidity around +- 2% with far less saw tooth effect. (Fig 3.2) with was done over a time period od 2.5 minutes with basic PID parameters set.
+
+### (Fig 3.1)
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/temp_pid%20.png" alt="temp histrory graph" width="100%"/></div>
+
+### (Fig 3.2)
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/hum_pid%20.png" alt="hum histrory graph" width="100%"/></div>
+
+* Further tuning has been done with slightly different PID parameters but this time over a period of 1 minute the results are tighter with temperature peaking @ 25.12 and dropping on to 25.02 (Fig 3.3)and humidity on average  +- 0.5% (Fig 3.4) so much tighter results.
+
+### (Fig 3.3)
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/temp60sec.jpg" alt="temp histrory graph" width="100%"/></div>
+
+### (Fig 3.4)
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/hum60sec.jpg" alt="hum histrory graph" width="100%"/></div>
+
+<br/>
 
 ## The User's Goals Of This Controller Are:
 * An easy to navigate menu.
@@ -169,7 +181,11 @@ The LCD backlight can be set to automatic timeout, this will turn off the backli
 * temp_I                           
 * temp_D                           
 * target_temp                     
-* time_period                         
+* time_period
+* night_hour_start
+* night_minute_start
+* night_hour_finish
+* night_minute_finish                 
 * hum_P                               
 * hum_I                                
 * hum_D                              
