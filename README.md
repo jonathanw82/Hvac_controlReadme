@@ -89,7 +89,7 @@ temperature is stable within +- 0.15°c (Fig 3.1) and humidity around +- 2% with
 
 ## Main Hardware:
 * 1x Controllino Maxi.
-* 1x SHT31 Temperature humidity sensor.
+* 2x SHT31 Temperature humidity sensor.
 * 1x Lcd I2C.
 * 1x KY-040 Rotary Encoder.
 * 1x 24v DC Psu.
@@ -127,14 +127,14 @@ The backend is written in Python3 utalising SQLLite for the database and Phoe Mq
 ## Power Consumption:
 Estimated Power Consumption as rated in docs, actual may vary.
 
-| Component              | Consumption        |
-| :----------------      | :-------           |
-| Controllino Maxi       | @ 24v 300 ma       |
-| Lcd i2c                | @ 5v 200 ma        |
-| SHT31 temp/hum sensor  | @ 5v < 1.5 ma      |
-| KY-040 Rotary Encoder  | @ 5v < 0.05 ma     |
-| Rapberry Pi            | @ 5v > 760 ma      |
-|                        |Total =  > 1.30 a   |
+| Component                  | Consumption        |
+| :----------------          | :-------           |
+| Controllino Maxi           | @ 24v 300 ma       |
+| Lcd i2c                    | @ 5v 200 ma        |
+| 2 x SHT31 temp/hum sensor  | @ 5v < 300 ma      |
+| KY-040 Rotary Encoder      | @ 5v < 0.05 ma     |
+| Rapberry Pi                | @ 5v > 760 ma      |
+|                            |Total =  > 1.60 a   |
 
 <div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/wiring.jpg" alt="wiring diagram" width="100%"/></div>
 
