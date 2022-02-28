@@ -38,6 +38,10 @@ After the user has set up the initial settings such as temperature target, humid
 
 A sensor will read the current temperature in the room and feed the data back to a PID algorithm, from here it will decide on the next course of action. For instance, if the temperature is less than the target temperature, the controller will turn on the heater for a set period of time of a percentage of 2.5 minutes (this could be 5 but for now 2.5 minutes), after the 2.5 minutes have elapsed it will turn on the heater again for a percentage of the time, depending on how far or close to the set point the temperature is, the controller will adjust the percentage of time accordingly to attempt to reach the setpoint without overshooting it. 
 
+
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/timeperiod.png" alt="time representation" width="100%"/></div>
+
+
 The same is true if the temperature in the room is over the setpoint, the controller will in effect act in reverse, but this time turning on the cooling coils pulling the temperature down towards the setpoint. This behavior stops the constant switching from heating/cooling as the controller tries to correct its error with overshooting as seen with the current controller.
 
 This use of a PID algorythum is also implemented with humidity, if the humidity is below the setpoint the PID with turn the humidifier on for a percentage of 2.5 minutes as explained with temperature. 
