@@ -265,6 +265,10 @@ Idaes for day night https://forum.arduino.cc/t/check-if-time-is-between-two-time
 Icons
 Sun icons created by Freepik - Flaticon
 
+RTC info:
+
+https://community.controllino.com/forums/discussion/proper-usage-of-rtc/
+
 Thank you to:
 
 Adam Waterman for PID tuning,
