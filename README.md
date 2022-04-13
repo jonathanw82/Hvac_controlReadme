@@ -1,7 +1,7 @@
 <div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/repoimage.jpg" alt="repo image" width="100%"/></div>
 
 # HVAC-Controller
-Temperature and humidity controller Ver 2.22_mqtt
+Temperature and humidity controller Ver 2.27_mqtt
 
 Hvac Control is used in conjunction with wall-mounted Bard HVAC units to effectively, control the environment with high precision.
 
@@ -15,13 +15,13 @@ The current controllers have very little precision and the user has no easy way 
 
 ### <b>Solution:</b>
 
-Hvac Control utilizes an integrated real-time clock, giving the user control of the environment day or night (Fig 2), with the ability to adjust temperature targets and humidity levels. 
+HVAC Control utilizes an integrated real-time clock, giving the user control of the environment day or night (Fig 2), with the ability to adjust temperature targets and humidity levels. 
 An LCD display, shows you the current temperature, humidity, target parameters, current status from heating, cooling, or humidification (Fig 3), day or night modes, the current time, and night mode start-finish times.
 
 For full control, the rotary knob allows access to an easy-to-navigate array of settings, for control right down to the precision of 0.1 of a degree.
-Mqtt intergration allows messages to be sent to a database for historic data but also to a webpage to display history, current status and include full external control.
+MQTT integration allows messages to be sent to a database for historic data but also to a webpage to display history, current status and include full external control.
 
-PID loops are used to control the temperature and humidity, this allows the controller to seamlessly control the envirmonet without massive over shoots and will stop constant switching from heating to cooling, and humidify to dehumidifying.
+PID loops are used to control the temperature and humidity, this allows the controller to seamlessly control the environment without massive overshoots and will stop constant switching from heating to cooling, and humidify to dehumidifying.
 
 ### (Fig 2)
 <div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/graph.jpg" alt="expected temp histrory graph" width="100%"/></div>
@@ -94,6 +94,7 @@ temperature is stable within +- 0.15°c (Fig 3.1) and humidity around +- 2% with
 ## Main Hardware:
 * 1x Controllino Maxi.
 * 2x SHT31 Temperature humidity sensor.
+* 1x 9548A I2C Multiplexer.
 * 1x Lcd I2C.
 * 1x KY-040 Rotary Encoder.
 * 1x 24v DC Psu.
@@ -113,15 +114,15 @@ The Software is written in C++, compiled and uploaded to the micro controller by
 * Wire for use of I2C bus.
 * avr/wdt for use of the built in watchdog.
 * TimerOne for use with the encoder timeing.
-* Ethernet
+* Ethernet.
 
 ### Additional
 * encoder-arduino for the Rotary encoder.
 * Liquidcrystal-IC2 for the LCD Display.
 * Controllino for allowing controllino specific aliases.
 * SPI for the serial peripheral interface.
-* Mqtt
-* Mqtt Client
+* Mqtt.
+* Mqtt Client.
 
 ## Software for Front and Backend:
 The backend is written in Python3 utalising SQLLite for the database and Phoe Mqtt for the messaging service, the front end uses HTML5, CSS3 and JavaScript.
@@ -136,9 +137,10 @@ Estimated Power Consumption as rated in docs, actual may vary.
 | Controllino Maxi           | @ 24v 300 ma       |
 | Lcd i2c                    | @ 5v 200 ma        |
 | 2 x SHT31 temp/hum sensor  | @ 5v < 300 ma      |
+| 9548A I2C Multiplexer      | @ 5v < 100 ma       |
 | KY-040 Rotary Encoder      | @ 5v < 0.05 ma     |
 | Rapberry Pi                | @ 5v > 760 ma      |
-|                            |Total =  > 1.60 a   |
+
 
 <div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/wiring.jpg" alt="wiring diagram" width="100%"/></div>
 
@@ -193,7 +195,8 @@ The LCD backlight can be set to automatic timeout, this will turn off the backli
 * hum_P                               
 * hum_I                                
 * hum_D                              
-* target_hum         
+* target_hum  
+* standby       
 * reset             
 
 
