@@ -48,7 +48,7 @@ This use of a PID algorythum is also implemented with humidity, if the humidity 
 
 When the night period is reached the controller will automatically adjust its set points to the values for the night, and start adjusting the environment accordingly, while activating the auto backlight (if user activated) on the LCD screen. More on this feature can be found notes for setup section.
 
-During operation, once a second, the temperature/humidity sensor values, PID values, and a myriad of other values are transmitted via Mqtt. These messages are then collected by the Mosquitto Mqtt Broker that is installed on the Raspberry Pi, that is connected to the Controllinio Maxi via an ethernet cable. 
+During operation, if a value changes such as temperature/humidity sensor values, PID values, and a myriad of other values are transmitted via Mqtt. These messages are then collected by the Mosquitto Mqtt Broker that is installed on the Raspberry Pi, that is connected to the Controllinio Maxi via an ethernet cable. 
 
 ## Testing:
 Current testing is producing promising results, it is worth bearing in mind that with the container not being insulated or sealed, the results we are seeing may not be a true representation of what we will actually see in the correct environments but, the results are pleasing so far.
