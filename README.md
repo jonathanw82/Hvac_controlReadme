@@ -88,6 +88,7 @@ temperature is stable within +- 0.15°c (Fig 3.1) and humidity around +- 2% with
 <br/>
 
 ## Technology Used:
+Current and Future:
 <div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/tech.jpg" alt="tech used" width="80%"/></div>
 
 
@@ -125,6 +126,7 @@ The Software is written in C++, compiled and uploaded to the micro controller by
 * Mqtt Client.
 
 ## Software for Front and Backend:
+Under construction:
 The backend is written in Python3 utalising SQLLite for the database and Phoe Mqtt for the messaging service, the front end uses HTML5, CSS3 and JavaScript.
 
 <br/>
@@ -137,7 +139,7 @@ Estimated Power Consumption as rated in docs, actual may vary.
 | Controllino Maxi           | @ 24v 300 ma       |
 | Lcd i2c                    | @ 5v 200 ma        |
 | 2 x SHT31 temp/hum sensor  | @ 5v < 300 ma      |
-| 9548A I2C Multiplexer      | @ 5v < 100 ma       |
+| 9548A I2C Multiplexer      | @ 5v < 100 ma      |
 | KY-040 Rotary Encoder      | @ 5v < 0.05 ma     |
 | Rapberry Pi                | @ 5v > 760 ma      |
 
@@ -196,7 +198,7 @@ The LCD backlight can be set to automatic timeout, this will turn off the backli
 * hum_I                                
 * hum_D                              
 * target_hum  
-* standby       
+* standby ** Not used without frontend **     
 * reset             
 
 
@@ -259,8 +261,11 @@ Version 3.00_mqtt is in the pipe line featuring a plethora of other features for
 Idaes for day night https://forum.arduino.cc/t/check-if-time-is-between-two-time-inputs/517765/23?page=2
 
 Thank you to:
-Adam Waterman,
-Harry Willis, 
-Will Derriman, for software support.
+
+Adam Waterman for PID tuning,
+
+Harry Willis for best practices,  
+
+Will Derriman for software mentoring and creation of a Django API V3+.
 
 [Back_to_top](#HVAC-Controller)
