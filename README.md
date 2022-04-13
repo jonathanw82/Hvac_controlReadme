@@ -255,6 +255,9 @@ Version 3.00_mqtt is in the pipe line featuring a plethora of other features for
 
 Idaes for day night https://forum.arduino.cc/t/check-if-time-is-between-two-time-inputs/517765/23?page=2
 
+Icons
+Sun icons created by Freepik - Flaticon
+
 Thank you to:
 Adam Waterman,
 Harry Willis, 
