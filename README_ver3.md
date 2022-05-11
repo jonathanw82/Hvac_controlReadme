@@ -87,7 +87,7 @@ temperature is stable within +- 0.15°c (Fig 3.1) and humidity around +- 2% with
 
 <br/>
 
-## Main user interface:
+## Main User Interface:
 The main screen consists of a navigation bar across the top of the screen with options (Home, Charts, Info and Login) after logging in the login icon becomes the logged-in user's name with a dropdown menu that contains Admin and Logout.
 The current time is also displayed at the bottom left of all pages.
 
@@ -103,7 +103,7 @@ If the user is logged in, PID setting options will also appear under each headin
 
 ### Info:
 This page displays all info including 
-* Software version, location and device name.
+* Software Version, Location and Device Name.
 * P I and D responses for both temperature and humidity.
 * PID output value and duration of heating/cooling, humidification/dehumidification.
 * The actual temperature and humidity out of the HVAC itself.
@@ -117,12 +117,12 @@ If logged in and the controller is not touched for 30 minutes the user will be a
 
 ### Admin:
 From this page, the user can see info such as
-* Logged in user, Device name, Location, Software Version, Mac Address and Host Name.
+* Logged In User, Device Name, Location, Software Version, Mac Address and Host Name.
 * A link to MQTT commands see below.
 * A Controllino reset button, when the button is clicked you will be asked if you wish to continue and be given a chance to cancel, if OK the Controllino will be given a command to reset and the and reset box will disappear.
 * Time period setting input.
 * Daylight saving on/off,
-* Note on Day light Saving: Setting day light saving is done explicitly by the user, this is not done automatically, this is done on purpose as crops in controlled enviroments do not neccaraly need day light saving. If the Real Time Clock needs updating, it is imporant that if the actual current time is currently british summertime hour +1, the time entered is Coordinated Universal Time (UTC) to allow the user explicit contol of daylight saving.
+* Note on Day light Saving: setting day light saving is done explicitly by the user, this is not done automatically, this is done on purpose as crops in controlled enviroments do not neccaraly need day light saving. If the Real Time Clock needs updating, it is imporant that if the actual current time is currently british summertime hour +1, the time entered is Coordinated Universal Time (UTC) to allow the user explicit contol of daylight saving.
 
 <br>
 
