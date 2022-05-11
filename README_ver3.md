@@ -70,7 +70,7 @@ temperature is stable within +- 0.15°c (Fig 3.1) and humidity around +- 2% with
 <br/>
 
 ## The User's Goals Of This Controller Are:
-* Easy to navigate user interface.
+* Easy to navigate touch screen user interface.
 * Future integration into Ostara.
 * Low power consumption.
 * Automatic operation.
@@ -120,6 +120,11 @@ From this page, the user can see info such as
 * Logged in user, Device name, Location, Software Version, Mac Address and Host Name.
 * A link to MQTT commands see below.
 * A Controllino reset button, when the button is clicked you will be asked if you wish to continue and be given a chance to cancel, if OK the Controllino will be given a command to reset and the and reset box will disappear.
+* Time period setting input.
+* Daylight saving on/off,
+* Note on Day light Saving: Setting day light saving is done explicitly by the user, this is not done automatically, this is done on purpose as crops in controlled enviroments do not neccaraly need day light saving. If the Real Time Clock needs updating, it is imporant that if the actual current time is currently british summertime hour +1, the time entered is Coordinated Universal Time (UTC) to allow the user explicit contol of daylight saving.
+
+<br>
 
 ### MQTT Commands:
 This page displays the list of MQTT commands their values and options. 
@@ -209,10 +214,15 @@ Estimated Power Consumption as rated in docs, actual may vary.
 ## Controllino Setup:
 
 #### <b>Real time Clock (RTC):</b>
-It is worth noting that the Controllino has a built-in battery to hold the RTC  when there is no external power, however, it only holds the RTC for about 2 weeks, after this time the RTC may need resetting.
+It is worth noting that the Controllino has a built-in battery to hold the RTC  when there is no external power, however it only holds the RTC for about 2 weeks, after this time the RTC may need resetting.
 
-To set the RTC, you will require a laptop or similar device, with the [Arduino Ide](https://www.arduino.cc/en/software) software installed and set up correctly to do this open the Arduino Ide, go to File, Preferences, under the settings tab locate the  "Additional boards manager URLs", then put a comma after the anything already in the box then append this line of code https://raw.githubusercontent.com/CONTROLLINO-PLC/CONTROLLINO_Library/master/Boards/package_ControllinoHardware_index.json you will then need to go to tools, board, board manager, then search for Controllino and install, the last step to install go to sketch, include a library, manage libraries search and install Controllino, you will now need a USB to USB B cable, and the relevant Hvac firmware, please make a note of the correct firmware version, this can be obtained by entering the info tab on Hvac Django control interface.
+Regular polling of the RTC chip can causes drift of the RTC internal clock. It is possible this can slowdown the RTC for several seconds per day, the reason is that the RTC chip stops its internal clock counter during the SPI communication between the main processor and the RTC chip. To avoid this we only call the RTC internal clock every 12 hours to update the current time with the actual time, between these 12 hour periods we use the controllinos system time (millis) to act as a RTC reducing the calls to the RTC internal clock and mitigating the time drift. If the controllino is reset the current time will automaically be updated to the actual time straight off the bat.
 
+To set the RTC, you will require a laptop or similar device, with the [Arduino Ide](https://www.arduino.cc/en/software) software installed and set up correctly to do this open the Arduino Ide, go to File, Preferences, under the settings tab locate the  "Additional boards manager URLs", then put a comma after the anything already in the box then append this line of code https://raw.githubusercontent.com/CONTROLLINO-PLC/CONTROLLINO_Library/master/Boards/package_ControllinoHardware_index.json you will then need to go to tools, board, board manager, then search for Controllino and install, the last step to install go to sketch, include a library, manage libraries search and install Controllino, you will now need a USB to USB B cable, and the relevant Hvac firmware, please make a note of the correct firmware version, this can be obtained by entering the info tab on Hvac Django control interface. (Fig 5)
+
+### (Fig 5)
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/lcd.jpg" alt="Setup of real time clock" width="50%"/></div>
+<br/>
 
 Open the firmware in the Arduino IDE, when flashing the Controllino for the first time or setting the RTC, the line of code under the void setup() section, named Controllino_SetTimeDate(), will need to be uncommented. (Fig 6)
 <br/>
