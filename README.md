@@ -132,7 +132,7 @@ From this page, the user can see info such as
 * Daylight saving on/off,
 * Note on Day light Saving: setting day light saving is done explicitly by the user, this is not done automatically, this is done on purpose as crops in controlled enviroments do not neccaraly need day light saving. If the Real Time Clock needs updating, it is imporant that if the actual current time is currently british summertime hour +1, the time entered is Coordinated Universal Time (UTC) to allow the user explicit contol of daylight saving.
 
-<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/admin.jpg" alt="admin" width="50%"/><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/reset.jpg" alt="reset" width="50%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/adminnew.jpg" alt="admin" width="50%"/><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/reset.jpg" alt="reset" width="50%"/></div>
 
 <br>
 
