@@ -156,7 +156,7 @@ This page displays the list of MQTT commands their values and options.
 * standby    
 * reset             
 
-<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/mqttcommands.jpg" alt="mqtt commands" width="80%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/mqttcommands1.jpg" alt="mqtt commands" width="80%"/></div>
 
 
 #
