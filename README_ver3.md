@@ -96,10 +96,14 @@ It consists of large, easy-to-read current temperature and humidity data with st
 
 If the dehumidifying icon is flashing, this is because heating and cooling always take precedence over dehumidification, if heating or cooling is idle the icon will stop flashing and dehumidification will take place.
 
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/landing.jpg" alt="landing page" width="80%"/></div>
+
 ### Charts:
 This consists of multiple line charts displaying historical data for temperature and humidity for 24 hours and P & I responses (D response will come in further releases) over a 6 hour period. 
 
 If the user is logged in, PID setting options will also appear under each heading for both temperature and humidity.
+
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/charts.jpg" alt="charts" width="50%"/><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/chartslog.jpg" alt="charts loggedin" width="50%"/></div>
 
 ### Info:
 This page displays all info including 
@@ -108,12 +112,16 @@ This page displays all info including
 * PID output value and duration of heating/cooling, humidification/dehumidification.
 * The actual temperature and humidity out of the HVAC itself.
 
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/info.jpg" alt="indo page" width="80%"/></div>
+
 ### Login:
 This page consists of a login box with username and password when either of these input boxes is clicked an on-screen keyboard will appear click on the screen outside the keyboard to make it disappear.
 
 After logging in the user will be redirected to the charts page.
 
 If logged in and the controller is not touched for 30 minutes the user will be automatically be logged out and redirected to the main home page.
+
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/login.jpg" alt="login page" width="80%"/></div>
 
 ### Admin:
 From this page, the user can see info such as
@@ -123,6 +131,8 @@ From this page, the user can see info such as
 * Time period setting input.
 * Daylight saving on/off,
 * Note on Day light Saving: setting day light saving is done explicitly by the user, this is not done automatically, this is done on purpose as crops in controlled enviroments do not neccaraly need day light saving. If the Real Time Clock needs updating, it is imporant that if the actual current time is currently british summertime hour +1, the time entered is Coordinated Universal Time (UTC) to allow the user explicit contol of daylight saving.
+
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/admin.jpg" alt="admin" width="50%"/><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/reset.jpg" alt="reset" width="50%"/></div>
 
 <br>
 
@@ -146,6 +156,7 @@ This page displays the list of MQTT commands their values and options.
 * standby    
 * reset             
 
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/mqttcommands.jpg" alt="mqtt commands" width="80%"/></div>
 
 
 #
@@ -221,7 +232,7 @@ Regular polling of the RTC chip can causes drift of the RTC internal clock. It i
 To set the RTC, you will require a laptop or similar device, with the [Arduino Ide](https://www.arduino.cc/en/software) software installed and set up correctly to do this open the Arduino Ide, go to File, Preferences, under the settings tab locate the  "Additional boards manager URLs", then put a comma after the anything already in the box then append this line of code https://raw.githubusercontent.com/CONTROLLINO-PLC/CONTROLLINO_Library/master/Boards/package_ControllinoHardware_index.json you will then need to go to tools, board, board manager, then search for Controllino and install, the last step to install go to sketch, include a library, manage libraries search and install Controllino, you will now need a USB to USB B cable, and the relevant Hvac firmware, please make a note of the correct firmware version, this can be obtained by entering the info tab on Hvac Django control interface. (Fig 5)
 
 ### (Fig 5)
-<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/lcd.jpg" alt="Setup of real time clock" width="50%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/softver.jpg" alt="software version" width="50%"/></div>
 <br/>
 
 Open the firmware in the Arduino IDE, when flashing the Controllino for the first time or setting the RTC, the line of code under the void setup() section, named Controllino_SetTimeDate(), will need to be uncommented. (Fig 6)
