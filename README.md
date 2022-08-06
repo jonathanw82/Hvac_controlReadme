@@ -103,6 +103,10 @@ This consists of multiple line charts displaying historical data for temperature
 
 If the user is logged in, PID setting options will also appear under each heading for both temperature and humidity.
 
+To the right hand side of this page there is a flashing round down arrow and below theat is a page refresh button, when the flashing round down arrow is clicked the it will stop flashing and an round up arrow will appear allowing the user to scroll up. 
+
+A spearte flashing up arrow will aso appeard below the round up button if cliced will scroll the page back to the top
+
 <div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/charts.jpg" alt="charts" width="50%"/><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/chartslog.jpg" alt="charts loggedin" width="50%"/></div>
 
 ### Info:
@@ -115,13 +119,13 @@ This page displays all info including
 <div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/info.jpg" alt="indo page" width="80%"/></div>
 
 ### Login:
-This page consists of a login box with username and password when either of these input boxes is clicked an on-screen keyboard will appear click on the screen outside the keyboard to make it disappear.
+This page consists of a login box with username and password and a keyboard icon, if the icon is clicked an onscreen keyboard appears and can be closed by the sdame icon.
 
 After logging in the user will be redirected to the charts page.
 
 If logged in and the controller is not touched for 30 minutes the user will be automatically be logged out and redirected to the main home page.
 
-<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/login.jpg" alt="login page" width="80%"/></div>
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/login.jpg" alt="login page" width="50%"/><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/loginkeyboard.jpg" alt="loggedin keyboard" width="50%"/></div>
 
 ### Admin:
 From this page, the user can see info such as
@@ -131,6 +135,9 @@ From this page, the user can see info such as
 * Time period setting input.
 * Daylight saving on/off,
 * Note on Day light Saving: setting day light saving is done explicitly by the user, this is not done automatically, this is done on purpose as crops in controlled enviroments do not neccaraly need day light saving. If the Real Time Clock needs updating, it is imporant that if the actual current time is currently british summertime hour +1, the time entered is Coordinated Universal Time (UTC) to allow the user explicit contol of daylight saving.
+* Dark Ostara skin, this buton will add a dark Ostara skin to the main pages
+
+To the right hand side of this page there is a flashing round down arrow, when the flashing round down arrow is clicked the it will stop flashing and an round up arrow will appear allowing the user to scroll up. 
 
 <div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/adminnew1.jpg" alt="admin" width="50%"/><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/reset.jpg" alt="reset" width="50%"/></div>
 
@@ -153,8 +160,11 @@ This page displays the list of MQTT commands their values and options.
 * hum_I                                
 * hum_D                              
 * target_hum  
-* standby    
 * reset             
+* standby    
+
+
+To the right hand side of this page there is a flashing round down arrow, below that is a round left arrow, when the flashing round down arrow is clicked the it will stop flashing and an round up arrow will appear allowing the user to scroll up, if the left arrow is clicked the page will go back to the admin page. 
 
 <div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/mqttcommands1.jpg" alt="mqtt commands" width="80%"/></div>
 
