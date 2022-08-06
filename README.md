@@ -280,20 +280,26 @@ It is possible to allow the code to automatically update the clock when the firm
 
 ## Raspberry Pi Setup
 
-* Install Ubuntu LTS [here](https://ubuntu.com/download/raspberry-pi)
-* Follow the initial setup options to setup the keyboard language,wifi and Pi name password etc.
-* Install net-tools (sudo apt install net-tools) 
-* Disable sleep [here](https://stackoverflow.com/questions/64157889/prevent-raspberry-pi-4-for-going-to-sleep-shutdown-ubuntu-server-18-04)
-* Disable screen lock
-* Install Chrome or another type of browser
-* Install Openssh (sudo apt install openssh) 
-* Check IP adresses by typeing (ifconfig)
-* Setup SSH with Putty or Bitwise ssh using the IP address from ifconfig and the 
-* Setup static IP address for wired connection eth0 & assign an IP address the same as on the HVAC control firmware
-* Check docker is installed
-* Download the repo for Hvac-Django [here](https://github.com/jonathanw82/Hvac-django) to the Pi
-* To install the software on the Pi, move to the HVAC Django folder, in the root of it type (docker-compose up)
-* All files and dependencies will now be installed.
+* Install Raspian [here](https://www.raspberrypi.com/software/operating-systems/)
+* While flashing the sd card setup wifi with passwords etc and then setup ssh 
+* Setup the graphics congif file more can ber found [here](https://www.waveshare.com/wiki/7inch_HDMI_LCD)
+* Disable blank screen via desktop 
+* Check IP adresses using ifconfig
+* setup static IP address for wired connection & assign an IP address the same as on the Hvac control firmware 192.168.88.1
+* Download the repo for Hvac-Django to desktop [here](https://github.com/jonathanw82/Hvac-django) on the raspberry pi
+* Install doker and docker compose
+* Move to the repo directory 
+* docker-compose build
+* docker-compose up 
+* docker exec -it container_id python manage.py createsuperuser 
+* go to the webpage and go to django admin terminal then create a hvac device using mac address(A3:40:20:6F:73:3B)
+* go the login and admin on the webpage and reboot the contollino.
+* now place the autostart.txt data in to a file called autostart.desktop and place it in the file .config/autostart directory
+* make the file executable sudo chmod 770 autostart.desktop
+* make the file Desktop/Hvac_django/autostart.sh executable sudo chmod 770 autostartup.sh
+* go to chromium browser and add localhost to the browsers home page [here](https://support.google.com/chrome/answer/95314?hl=en-GB&co=GENIE.Platform%3DDesktop)
+* reboot the raspberry pi.
+
 
 
 
@@ -306,6 +312,9 @@ It is possible to allow the code to automatically update the clock when the firm
 * After Logging in you will see your user name on the navigation bar with a dropdown menu click this and then click admin.
 * From here you can set the daylight saving and the time duration for the PID.
 * You are now all set up and HVAC is now controlling your environment!
+
+### NOTE:
+Daylight saving will only change the time on the controll device and has no bering on the displayed time.
 
 #
 
