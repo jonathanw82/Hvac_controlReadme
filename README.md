@@ -228,6 +228,14 @@ Estimated Power Consumption as rated in docs, actual may vary.
 
 <div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/wiring.jpg" alt="wiring diagram" width="100%"/></div>
 
+# Installation Location
+The first deployment utilized a refrigerated truck container specifically repurposed for crop germination, where conditions were precisely controlled at 24°C and 80% humidity.
+
+<div align="center"><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/controller.jpg" alt="controller" width="50%"/><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/heater.jpg" alt="heater" width="50%"/><img src="https://github.com/jonathanw82/Hvac_controlReadme/blob/main/media/hum.jpg" alt="hum" width="50%"/></div>
+
+<br/>
+
+The second unit was installed in a commercial research facility in Bristol. This installation featured some modifications; it lacked the front end and instead sent its data directly to the site's CRM via MQTT, using only the microcontroller and firmware.
 
 # Deployment & Setup
 
