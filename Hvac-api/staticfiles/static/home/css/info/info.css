@@ -1,0 +1,20 @@
+.table-row{
+    padding: 2px!important;
+}
+
+span{
+    font-weight: bold;
+}
+
+td,th{
+    text-align: center;
+}
+
+.error_sensor{
+    display: inline-block;
+}
+
+.error_heading{
+    text-align: center;
+    margin-top: -10px;
+}

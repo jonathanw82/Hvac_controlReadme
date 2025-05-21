@@ -1,0 +1,53 @@
+/* ------------------ Scroll to top button --------------------*/
+
+.scrollToTop{
+    text-align:center;
+    font-weight: bold;
+    font-size: 1.8rem;
+    text-decoration: none;
+    position:fixed;
+    top:20%;
+    right:14px;
+    display:none;
+    z-index: 500;
+}
+
+.scrolltotopicon{
+    padding-top: 7px;
+    color: black;
+    -webkit-text-stroke: 1px black;
+}
+
+.scrollToTop:hover{
+    text-decoration:none;
+}
+
+
+/* ------------------ Page scroll buttons --------------------*/
+
+.scrollbuttonup{
+    position:fixed;
+    top: 50px;
+    right:10px;
+    font-size: 2rem;
+    z-index: 100000;
+    display: none;
+}
+
+.scrollbuttondown{
+    position:fixed;
+    top: 80vh;
+    right:10px;
+    font-size: 2rem;
+    z-index: 100000;
+}
+
+.button_fade{
+    animation: fadeAnimation 4s infinite!important;
+}
+
+@keyframes fadeAnimation {
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+}

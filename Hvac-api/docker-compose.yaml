@@ -1,0 +1,36 @@
+version: "2"
+services:
+  mqtt:
+    image: eclipse-mosquitto
+    container_name: mqtt
+   # ports:
+    # - 1883:1883
+    network_mode: "host"
+    volumes:
+      - ./mqtt.conf:/mosquitto/config/mosquitto.conf
+    restart: always
+
+  listener:
+    container_name: listener
+   # ports:
+   #  - 1883:1883
+    build:
+      context: .
+      dockerfile: Dockerfile.listener
+    network_mode: "host"
+    depends_on:
+      - mqtt
+      - django
+    restart: always
+
+  django:
+    container_name: django
+   # ports:
+   #   - 80:80
+    build:
+      context: .
+      dockerfile: Dockerfile.django
+    network_mode: "host"
+    volumes:
+      - ./databases:/src/databases
+    restart: always

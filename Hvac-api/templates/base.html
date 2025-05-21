@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+  <head>
+    {% block meta %}
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
+    {% endblock %}
+    {% block corecss %}
+      <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+      <link rel="stylesheet" type="text/css" href="{% static 'css/icons/all.css' %}" />
+      <link rel="stylesheet" type="text/css" href="{% static 'css/scrolltotop.css' %}" />
+      <link rel="stylesheet" type="text/css" href="{% static 'css/skins.css' %}" />
+    {% endblock %}
+
+    {% block extra_css %}
+    {% endblock %}
+
+    {% block corejs %}
+      <script src="{% static 'js/chart.js' %}"></script>
+      <script src="{% static 'js/jquery.js' %}"></script>
+      <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+      <script src="{% static 'js/base.js' %}"></script>
+      <script src="{% static 'js/auto_log_out.js' %}"></script>
+      <script src="{% static 'js/sendtomqtt.js' %}"></script>
+      <script src="{% static 'js/scrolltotop.js' %}"></script>
+      <script src="{% static 'js/url_list.js' %}"></script>
+      <script src="{% static 'js/skins.js' %}"></script>
+      <script src="{% static 'js/daylight.js' %}"></script>
+     {% endblock %}
+    <title>Hvac Control {% block extra_title %}{% endblock %}</title>
+  </head>
+  <body>
+    {% url 'home' as home_url %}
+    {% url 'chart' as chart_url %}
+    {% url 'info' as info_url %}
+    {% url 'settings' as settings_url %}
+    <nav class="navbar navbar-expand-sm sticky-top navbar-light nav-color" id="nav_bar"> 
+      <div id="dark_ostara_name" class="dark_ostara_name dark-ostara-name-hide">Dark Ostara</div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center navigation" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == home_url %} active {% endif %} " id="home" href="{% url 'home' %}"><i class="fa-solid fa-house-chimney"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == chart_url %} active {% endif %}" id="chart" href="{% url 'chart' %}"><i class="fa-solid fa-chart-column"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == info_url %} active {% endif %}" id="error" href="{% url 'info' %}"><i class="fa-solid fa-info"></i></a>
+          </li>
+          {% if not request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == settings_url %} active {% endif %}" id="settings" href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i></a>
+          </li>
+          {% endif %}
+          {% if request.user.is_authenticated %}
+          <script>
+            auto_logout();
+          </script>
+
+          <div class="dropdown">
+              <a class=" nav-link dropdown-toggle user-name" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{request.user.username|title }}
+              </a>
+              <div class="dropdown-menu drop-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="nav-item nav-link is-dark" id="logout_Button" href="{% url 'userAdmin' %}">Admin</a>
+                  <a class="nav-item nav-link is-dark" id="logout_Button" href="{% url 'account_logout' %}"><span class="logout-text">Logout</span><i class="fa-solid fa-right-from-bracket"></i></a>
+              </div>
+          </div>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+    <!-- <div class="info-div" id="info-div"></div> -->
+    <div class="standby_overlay hide" id="standby_overlay">
+      <div id="circle" class="circle"></div>
+       <div id="standby_button"><img class="innercircle" src="{% static 'images/standby.png' %}"  alt="standby"></div>
+    </div>
+    <span><img class="standby" id="standby" src="{% static 'images/standby.png' %}"  alt="standby"></span>
+    <div class="clock" id="clock"></div>
+    <div><img id="bottom_logo" class="bottom_logo hide" src="{% static 'images/logo.png' %}"  alt="logo"></div>
+    <div><img class="ostara_logo" src="{% static 'images/ostaralogo.png' %}"  alt="ostara logo"></div>
+
+
+    {% block content %}
+    {% endblock %}
+
+    {% block postloadjs %}
+
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec= /home/admin/Desktop/Hvac-django/autostartup.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Chrome
+Name=Chrome
+Comment[en_US]=

@@ -1,0 +1,5 @@
+
+#MQTT_HOST: workshoppi.localdomain
+MQTT_HOST: 192.168.88.1
+MQTT_PORT: 1883
+MQTT_PUBLISH: Workshop/sub/

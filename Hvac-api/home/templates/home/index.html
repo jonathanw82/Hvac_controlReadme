@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/index/index.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+    <!-- Status day night icons -->
+        <div class="col-sm-1">
+            <span id="day_night_icon"></span>
+        </div>
+        <div class="col-sm-1 hum">
+            <span class="hum_icon" id="hum_icon"></span>
+        </div>
+    <!-- Live temperature and humididty values -->
+        <div class="col-sm-8 main_data">
+            
+            <span class="display_data_box">
+                <div class="temp_hum_display"><span class="temp_hum" id="temp"></span>°c</div>
+                <div class="temp_hum_display"><span class="temp_hum" id="hum"></span>%</div>
+            </span>
+            
+        </div>
+    <!-- Status day night icons -->
+    <div class="col-sm-1 fan_icon">
+        <img class="fan fanspin" id="spinningfan" src="{% static 'images/fan.png' %}" alt="spinning fan">
+    </div>
+        <div class="col-sm-1">
+            <span id="status_icon"></span>
+        </div>
+    </div>
+    <!-- Target up and down value adjustments -->
+    <div class="row">
+        <div class="col-sm-6 targets">
+            <h5>Day Targets:</h5>
+            <div>Temp: <span id="target_temp"></span></div>
+            <button id="temp_down" type="button" class="btn is-light"><i class="fa-solid fa-angle-down"></i></button>
+            <input id="target_temp_val" type="number" step="0.10" min="0" max="35">
+            <button id="temp_up" type="button" class="btn is-light" ><i class="fa-solid fa-angle-up"></i></button>
+
+            <div>Hum: <span id="target_hum"></span></div>
+            <button id="hum_down" type="button" class="btn is-light"><i class="fa-solid fa-angle-down"></i></button>
+            <input id="target_hum_val" type="number" step="0.10" min="20" max="100">
+            <button id="hum_up" type="button" class="btn is-light" ><i class="fa-solid fa-angle-up"></i></button>
+
+        </div>
+        <div class="col-sm-6 targets">
+            <h5>Night Targets:</h5>
+            <div>Temp: <span id="target_temp"></span></div>
+            <button id="night_temp_down" type="button" class="btn is-light"><i class="fa-solid fa-angle-down"></i></button>
+            <input id="night_target_temp_val" type="number" step="0.10" min="0" max="35">
+            <button id="night_temp_up" type="button" class="btn is-light" ><i class="fa-solid fa-angle-up"></i></button>
+
+            <div>Hum: <span id="target_hum"></span></div>
+            <button id="night_hum_down" type="button" class="btn is-light"><i class="fa-solid fa-angle-down"></i></button>
+            <input id="night_target_hum_val" type="number" step="0.10" min="20" max="100">
+            <button id="night_hum_up" type="button" class="btn is-light" ><i class="fa-solid fa-angle-up"></i></button>
+        </div>
+    </div>
+    <hr>
+    <!-- Night time start and finish values -->
+    <div class="row">
+        <div class="col-sm-12 night_timeings">
+            <div id="night_timeings"></div>
+            <button type="button" class="btn is-light" data-toggle="modal" data-target="#night_time_settings">Set Time</button>
+        </div>
+    </div>
+
+    <!-- Popup Night time settings Modal -->
+    <div class="modal fade" id="night_time_settings" tabindex="-1" role="dialog" aria-labelledby="night_time_settings" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="ModalLongTitle">Night Time Settings:</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div>Start Hour:</div>
+                        <button id="night_hour_down" type="button" class="btn is-light"><i class="fa-solid fa-angle-down"></i></button>
+                            <input id="night_hour_start_val" type="number" step="0.10" min="20" max="100">
+                        <button id="night_hour_up" type="button" class="btn is-light" ><i class="fa-solid fa-angle-up"></i></button>
+                    </div>
+                    <div class="col-sm-6">
+                        <div>Start Minute:</div>
+                        <button id="night_minute_down" type="button" class="btn is-light"><i class="fa-solid fa-angle-down"></i></button>
+                            <input id="night_minute_start_val" type="number" step="0.10" min="20" max="100">
+                        <button id="night_minute_up" type="button" class="btn is-light" ><i class="fa-solid fa-angle-up"></i></button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div>Finish Hour:</div>
+                        <button id="night_hour_finish_down" type="button" class="btn is-light"><i class="fa-solid fa-angle-down"></i></button>
+                            <input id="night_hour_finish_val" type="number" step="0.10" min="20" max="100">
+                        <button id="night_hour_finish_up" type="button" class="btn is-light" ><i class="fa-solid fa-angle-up"></i></button>
+                    </div>
+                    <div class="col-sm-6">
+                        <div>Finish Minute:</div>
+                        <button id="night_minute_finish_down" type="button" class="btn is-light"><i class="fa-solid fa-angle-down"></i></button>
+                            <input id="night_minute_finish_val" type="number" step="0.10" min="20" max="100">
+                        <button id="night_minute_finish_up" type="button" class="btn is-light" ><i class="fa-solid fa-angle-up"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn is-light" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'home/js/index/index.js' %}"></script>
+    <script src="{% static 'home/js/index/indexbuttons.js' %}"></script>
+{% endblock %}

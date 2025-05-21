@@ -1,0 +1,16 @@
+FROM python:3.8
+ENV PYTHONUNBUFFERED 1
+RUN mkdir src
+RUN mkdir /var/lib/mosquitto
+COPY mqtt src/mqtt/
+WORKDIR src/
+
+
+RUN pip3 install paho-mqtt requests pyyaml
+
+ENV MQTT_HOST = localhost
+ENV MQTT_PORT = 1883
+ENV MQTT_PUBLISH = publish/path
+
+ENTRYPOINT python3 mqtt/mqtt_listener.py
+#ENTRYPOINT ["tail", "-f", "/dev/null"]

@@ -1,0 +1,52 @@
+span{
+  font-weight: bold;
+}
+
+.mqtt_heading{
+  text-align: center;
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+.form-check{
+  padding-left: 50px;
+}
+
+.time_period_val_input{
+  width: 40px;
+  text-align: center;
+}
+
+/* --------- Button status info --------- */
+.daylightsavinginfo{
+  float: left;
+}
+
+.skininfo{
+  float: left;
+}
+
+/* --------- Warning modal--------- */
+.warning_box{
+  text-align: center;
+}
+
+/* ----- Button on Mqtt Info page ----- */
+
+.back-button{
+  position: fixed;
+  z-index: 10000;
+  bottom: 0;
+  right: 10px;
+  font-size: 2rem;
+  color: black;
+  text-decoration: none;
+}
+
+.inline_anchor{
+  text-decoration: none;
+}
+
+li{
+  font-size: 0.9rem;
+}

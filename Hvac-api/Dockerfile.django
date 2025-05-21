@@ -1,0 +1,21 @@
+FROM python:3.8
+
+RUN mkdir src
+COPY . src/
+WORKDIR src/
+
+RUN apt-get update
+RUN apt-get install nginx -y
+
+RUN pip3 install --upgrade pip
+RUN pip3 install -r requirements.txt
+RUN pip3 install gunicorn
+RUN python3 manage.py migrate
+
+RUN mkdir /run/nginx
+#CMD nginx -c config/nginx.conf -p /src
+
+#ENTRYPOINT nginx -c config/nginx.conf -p /src && gunicorn hvac_control.wsgi
+#ENTRYPOINT ["tail", "-f", "/dev/null"]
+
+ENTRYPOINT /src/run_django.sh

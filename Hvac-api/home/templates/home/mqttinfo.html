@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/useradmin/useradmin.css' %}" />
+
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div id="scrollbuttonup" class="scrollbuttonup">
+            <span id="upbutton"><i class="fa-solid fa-circle-arrow-up" onclick="up()"></i></span>
+        </div>
+        <div id="scrollbuttondown" class="scrollbuttondown button_fade">
+            <span id="downbutton"><i class="fa-solid fa-circle-arrow-down" onclick="down()"></i></span>
+        </div>
+        
+        <a class="back-button" href="{% url 'userAdmin' %}"><i class="fa-solid fa-circle-arrow-left"></i></a>
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <h5 class="mqtt_heading">Mqtt keywords</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Keyword</th>
+                        <th scope="col">Value</th>
+                        <th scope="col">Options</th>
+                      </tr>
+                    </thead>
+                    <tbody id="table_data">
+                    </tbody>
+                  </table>
+            </div>
+            <div style="height: 30px;"></div>           
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'home/js/mqttinfo/mqttinfo.js' %}"></script>
+{% endblock %}

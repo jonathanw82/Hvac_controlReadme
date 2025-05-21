@@ -1,0 +1,73 @@
+
+/*------------------- Input boxes & buttons --------------------*/
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  width: 60px;
+  text-align: center;
+}
+
+.updown_arrow{
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.inline_buttons{
+  display: inline-flex;
+}
+
+.is-light{
+  background-color: #f5f5f5;
+  border-color: transparent;
+  color: rgba(0,0,0,0.7);
+}
+
+.admin_nav{
+  margin-top: 5px;
+  text-align: center;
+}
+
+.center-content{
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.pid-heading{
+  padding-bottom: 5px;
+}
+
+span{
+  font-weight: bold;
+}
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: block;
+}
+
+.refresh-button{
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  right: 0;
+  font-size: 1.6rem;
+}
+
+.chart-container{
+ margin-left: 20px;
+}
+
+.chart_box{
+  margin-bottom: 20px;
+}

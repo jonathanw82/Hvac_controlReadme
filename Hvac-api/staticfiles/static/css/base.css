@@ -1,0 +1,171 @@
+
+/* ------------ Main base template  ----------*/
+body{
+    font-family:Arial,sans-serif!important;
+}
+
+.navbar{
+    height: 50px;
+}
+
+.nav-color{
+    background-color: #632e69;
+}
+
+.nav-link{
+    color: white!important;
+    padding-right: 25px!important;
+    padding-left: 25px!important;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.ostara_logo{
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left: 10px;
+    margin-top: 5px;
+    z-index: 2000;
+}
+
+.bottom_logo{
+    position: absolute;
+    z-index: 3000;
+    width: 250px;
+    bottom:0;
+    right:0;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.info-div{
+    height: 40px;
+    background-color: #f8f9fa;
+}
+
+.clock{
+    position: fixed;
+    bottom: 0;
+    padding-left: 10px;
+    font-size: 1.5rem;
+}
+
+.clockchart{
+    position: fixed;
+    top: 9px;
+    right: 10%;
+    font-size: 1.5rem;
+    z-index: 100000;
+    color: white;
+}
+
+.active{
+    color: #80a84d!important;
+}
+
+.is-dark{
+    color: black!important;
+    font-size: 1.2rem;
+}
+
+.logout-text{
+    padding-right: 15px;
+}
+
+
+/*------------- Standby overlay ---------*/
+
+.standby{
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-right: 10px;
+    margin-top: 5px;
+    z-index: 2000;
+}
+
+.standby_overlay{
+    position: fixed;
+    width: 100%;
+    height: auto;
+    background-color: black;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3000;
+}
+
+.circle{
+    /* margin: auto; */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-image: radial-gradient(red 30%, transparent 60%);
+    animation: fadeAnimation 8s infinite;
+}
+
+@keyframes fadeAnimation {
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+}
+
+.innercircle{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100px;
+    width: 100px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.hide{
+    display: none;
+}
+
+
+.show_standby{
+    animation: fadeIn ease 3s;
+    display: block;
+}
+@keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+}
+
+.show_logo{
+    animation: fadeIn ease 15s;
+    display: block;
+}
+@keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+}
+
+/* ------------ Media queries  ----------*/
+
+@media only screen and (max-width: 800px){
+    .bottom_logo{
+        width:150px;
+    }
+}

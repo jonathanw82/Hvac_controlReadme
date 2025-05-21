@@ -1,0 +1,23 @@
+#simple-keyboard{
+    margin-top: 5px;
+    max-width: 600px;
+    margin-left: 345px;
+}
+
+@media only screen and (max-height:980px){
+    #simple-keyboard{
+        position: absolute!important;
+        margin-left: 150px;
+        margin-bottom: 5px;
+        z-index: 100000;
+        bottom: 0px;
+        max-width: 400px;
+    }
+}
+
+@media only screen and (max-height:770px){
+    #simple-keyboard{
+        margin-left: 58px;
+    }
+}
+

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/info/info.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+      <!-- Basic info on the device -->
+      <div style="height: 10px;"></div>
+        <div class="col-sm-6">
+            <div>Device Name: <span id="name"></span></div>
+            <div>Location: <span id="location"></span></div>
+        </div>
+        <div class="col-sm-6">
+            <div>Software Version: <span id="software"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+           <!-- Main infomation about all the pid values -->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                      <th scope="col">Temperature: <span id="temp"></span>°c</th>
+                      <th scope="col">Status: <span id="temp_state"></span></th>
+                    </tr>
+                  </thead>
+                <tbody>
+                  <tr>
+                    <td class="table-row"><div>Target: <span id="target_temp"></span>°c</div></td>
+                    <td class="table-row"><div>PID Error: <span id="temp_pid_error"></span>°c</div></td>
+                  </tr>
+                  <tr>
+                    <td class="table-row"><div>P response: <span id="temp_p_response"></span></div></td>
+                    <td class="table-row"><div>I response: <span id="temp_i_response"></span></div></td>
+                  </tr>
+                  <tr>
+                    <td class="table-row"><div>D response: <span id="temp_d_response"></span></div></td>
+                    <td class="table-row"><div>PID output: <span id="temp_pid_output"></span> %</div></td>
+                  </tr>
+                  <tr>
+                    <td class="table-row"><div>Output duration: <span id="temp_heat_time_on"></span></div></td>
+                    <td class="table-row"><div>Actual output: <span id="error_temp"></span>°c</div></td>
+                  </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th scope="col">Humidity: <span id="hum"></span>%</th>
+                        <th scope="col">Status: <span id="hum_state"></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="table-row"><div>Target: <span id="target_hum"></span>%</div></td>
+                    <td class="table-row"><div>PID Error: <span id="hum_pid_error"></span> %</div></td>
+                  </tr>
+                  <tr>
+                    <td class="table-row"><div>P response: <span id="hum_p_response"></span></div></td>
+                    <td class="table-row"><div>I response: <span id="hum_i_response"></span></div></td>
+                  </tr>
+                  <tr>
+                    <td class="table-row"><div>D response: <span id="hum_d_response"></span></div></td>
+                    <td class="table-row"><div>PID output: <span id="hum_pid_output"></span> %</div></td>
+                  </tr>
+                  <tr>
+                    <td class="table-row"><div>Output duration: <span id="hum_heat_time_on"></span></div></td>
+                    <td class="table-row"><div>Actual output: <span id="error_hum"></span> %</div></td>
+                  </tr>
+                </tbody>
+                <thead>
+                    <tr></tr>
+                </thead>
+              </table>
+        </div>
+        </div>
+</div>
+
+
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'home/js/info/info.js' %}"></script>
+{% endblock %}

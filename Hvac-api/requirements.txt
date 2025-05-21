@@ -1,0 +1,11 @@
+Django==3.*
+django-allauth==0.48.0
+django-filter==21.1
+djangorestframework==3.13.1
+djangorestframework-simplejwt==5.0.0
+Markdown==3.3.6
+paho-mqtt==1.6.1
+pre-commit
+requests
+django-cors-headers
+django-crispy-forms==1.9.2

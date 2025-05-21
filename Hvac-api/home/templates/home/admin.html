@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/useradmin/useradmin.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div id="scrollbuttonup" class="scrollbuttonup">
+        <span id="upbutton"><i class="fa-solid fa-circle-arrow-up" onclick="up()"></i></span>
+    </div>
+    <div id="scrollbuttondown" class="scrollbuttondown button_fade">
+        <span id="downbutton"><i class="fa-solid fa-circle-arrow-down" onclick="down()"></i></span>
+    </div>
+    <div class="row">
+        <!-- Basic info on the device -->
+        <div style="height:10px;"></div>
+        <div class="col-sm-6">
+            <div>Logged in as: <span>{{request.user.username|title}}</span></div>
+            <div>Device Name: <span id="name"></span></div>
+            <div>Location: <span id="location"></span></div>
+        </div>
+        <div class="col-sm-6">
+            <div>Software Version: <span id="software"></div>
+            <div>Mac Address: <span id="mac"></span></div>
+            <div>Host Name: <span id="host"></span></div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <!-- Some info about basic workings -->
+        <div class="col-sm-12">
+            <h6>Info:</h6>
+            <ul>
+                <li>Please note the admin area will automaically logout after 30 minutes of inactivity, this will also incude removing access to the PID
+                    buttons on the charts page.</li>
+                <li>For a list of MQTT commands click <a class="inline_anchor" href="{% url 'mqttinfo' %}">HERE.</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+         <!-- Reboot the controllino buttons -->
+        <div class="col-sm-12">
+            <h6>Reboot:</h6>
+            <ul>
+                <li>
+                    Clicking reboot will restart the controllino only, no settings will be lost!
+                </li>
+                <li>
+                    To reboot Controllino click <a type="button" class="inline_anchor" data-toggle="modal" data-target="#warningModle">REBOOT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Daylight saving check switch  -->
+       <div class="col-sm-6">
+           <h6>Daylight Saving:</h6>
+           <div class="form-check form-switch" style='text-align:center'>
+                <input class="form-check-input" type="checkbox" role="switch" id="daylightswitch">
+                <div class="daylightsavinginfo" id="daylightsavinginfo"></div>
+          </div>
+       </div>
+    <!-- Time period input  -->
+   <div class="col-sm-6">
+       <h6>Time Period for PID:</h6>
+        <div  style='text-align:center'>
+            <button id="period_down" type="button" class="btn is-light"><i class="fa-solid fa-angle-down"></i></button>
+                <input class="time_period_val_input" id="time_period_val_input" type="number" step="1" min="0" max="500" >
+            <button id="period_up" type="button" class="btn is-light" ><i class="fa-solid fa-angle-up"></i></button>
+        </div>
+   </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <h6>Dark Ostara Skin:</h6>
+            <div class="form-check form-switch" style='text-align:center'>
+                <input class="form-check-input" type="checkbox" role="switch" id="skinswitch">
+                <div class="skininfo" id="skininfo"></div>
+          </div>
+    </div>
+</div>
+<div style="height:10px;"></div>
+</div>
+      <!-- Popup Night time settings Modal -->
+      <div class="modal fade" id="warningModle" tabindex="-1" role="dialog" aria-labelledby="warningModle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="ModalLongTitle">Reboot Controllino:</h5>
+            </div>
+            <div class="modal-body">
+                <div class="warning_box" id="warning_box">
+                    <h3>Are you sure?</h3>
+                    <button id="reset" type="button" class="btn btn-danger">Yes</button>
+                    <button id="close" type="button"  class="btn btn-success" data-dismiss="modal">Cancel</button>
+                </div>
+                <h4 style="text-align: center;" id="reset_info"></h4>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'home/js/useradmin/useradmin.js' %}"></script>
+    <script src="{% static 'home/js/useradmin/useradminbuttons.js' %}"></script>
+{% endblock %}
