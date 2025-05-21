@@ -74,7 +74,6 @@ temperature is stable within +- 0.15°c (Fig 3.1) and humidity around +- 2% with
 
 ## The User's Goals Of This Controller Are:
 * An easy to navigate menu.
-* Future intergration into Ostara.
 * Low power consumption.
 * Automatic operation.
 * Automated monitoring of temperature and humidity to regulate the indoor climate.

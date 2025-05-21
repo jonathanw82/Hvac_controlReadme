@@ -71,7 +71,6 @@ temperature is stable within +- 0.15°c (Fig 3.1) and humidity around +- 2% with
 
 ## The User's Goals Of This Controller Are:
 * Easy to navigate touch screen user interface.
-* Future integration into Ostara.
 * Low power consumption.
 * Automatic operation.
 * Automated monitoring of temperature and humidity to regulate the indoor climate.
@@ -135,7 +134,7 @@ From this page, the user can see info such as
 * Time period setting input.
 * Daylight saving on/off,
 * Note on Day light Saving: setting day light saving is done explicitly by the user, this is not done automatically, this is done on purpose as crops in controlled enviroments do not neccaraly need day light saving. If the Real Time Clock needs updating, it is imporant that if the actual current time is currently british summertime hour +1, the time entered is Coordinated Universal Time (UTC) to allow the user explicit contol of daylight saving.
-* Dark Ostara skin, this buton will add a dark Ostara skin to the main pages
+* Optional skin, this buton will add an additional skin to the main pages
 
 To the right hand side of this page there is a flashing round down arrow, when the flashing round down arrow is clicked the it will stop flashing and an round up arrow will appear allowing the user to scroll up. 
 
